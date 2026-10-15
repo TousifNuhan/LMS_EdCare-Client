@@ -6,23 +6,25 @@ EdCare is a full-stack, role-based online learning platform where **students** b
 
 ## 🔗 Live Links
 
-
 | | |
 |---|---|
 | **Live Site** | https://edcare-56e4b.web.app/ |
 | **Client Repository** | https://github.com/TousifNuhan/LMS_EdCare-Client |
 | **Server Repository** | https://github.com/TousifNuhan/LMS_EdCare-Server |
 
+> Replace the repository links above with your actual GitHub URLs.
+
 ---
 
 ## 🔑 Demo Credentials
-
 
 | Role | Email | Password |
 |---|---|---|
 | **Admin** | `admin@gmail.com` | `Aa123456!!!` |
 | **Teacher** | `athorne@edumanage.com` | `Aa123456!!!` |
 | **Student** | `edcare@gmail.com` | `Aa123456!!!` |
+
+> ⚠️ Only publish **throwaway demo accounts** here — never a password you use anywhere else, since this file is public.
 
 ---
 
