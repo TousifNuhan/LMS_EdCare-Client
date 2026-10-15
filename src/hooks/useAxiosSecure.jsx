@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5001'
+  baseURL: 'https://edcare-seven.vercel.app'
 });
 
 const useAxiosSecure = () => {
@@ -39,8 +39,6 @@ const useAxiosSecure = () => {
       }
     );
 
-    // Eject these specific interceptors when this component unmounts
-    // or when logout/navigate change, so they never stack up.
     return () => {
       axiosSecure.interceptors.request.eject(requestInterceptor);
       axiosSecure.interceptors.response.eject(responseInterceptor);

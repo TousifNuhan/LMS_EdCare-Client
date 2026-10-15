@@ -56,51 +56,6 @@ const AdminFinancials = () => {
     fetchFinancialData();
   }, []);
 
-  const handleIssueRefund = async (tx) => {
-    const email = tx.email || tx.userEmail || 'User';
-    const rawAmount = tx.price ?? tx.amount ?? tx.pricePaid ?? 0;
-    const formattedAmount = `৳${Number(rawAmount).toFixed(2)}`;
-
-    const result = await Swal.fire({
-      title: 'Issue Direct Refund?',
-      text: `Are you sure you want to process a direct admin refund of ${formattedAmount} to ${email}?`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#e11d48',
-      cancelButtonColor: '#78716c',
-      confirmButtonText: 'Yes, Issue Refund',
-      cancelButtonText: 'Cancel',
-      reverseButtons: true,
-      borderRadius: '1rem',
-      customClass: {
-        popup: 'rounded-2xl font-sans',
-        confirmButton: 'rounded-xl px-4 py-2 text-xs font-bold cursor-pointer',
-        cancelButton: 'rounded-xl px-4 py-2 text-xs font-bold cursor-pointer'
-      }
-    });
-
-    if (!result.isConfirmed) return;
-
-    try {
-      // paymentIntentId is a legacy field name from the old Stripe flow.
-      // SSLCommerz transactions only populate transactionId, which the backend
-      // route already matches against — kept for backward compatibility with
-      // any pre-migration Stripe records still in the DB.
-      const res = await axiosSecure.post('/admin/payments/refund', {
-        paymentIntentId: tx.stripePaymentIntentId || tx.paymentIntentId || tx.transactionId,
-        transactionId: tx.transactionId || tx._id,
-        reason: 'requested_by_customer'
-      });
-
-      if (res.data?.success) {
-        toast.success('Refund processed successfully!');
-        fetchFinancialData();
-      }
-    } catch (err) {
-      toast.error(err.response?.data?.message || 'Refund failed');
-    }
-  };
-
   const getCourseTitle = (tx) => {
     if (tx?.courseTitle && tx.courseTitle !== 'N/A') return tx.courseTitle;
     if (tx?.title && tx.title !== 'N/A') return tx.title;
@@ -227,8 +182,8 @@ const AdminFinancials = () => {
                 <th className="py-3.5 px-4">User Email</th>
                 <th className="py-3.5 px-4">Course</th>
                 <th className="py-3.5 px-4">Amount</th>
+                <th className="py-3.5 px-4">Commission</th>
                 <th className="py-3.5 px-4">Status</th>
-                <th className="py-3.5 px-4 text-center">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-stone-100 text-xs text-stone-700">
@@ -281,6 +236,17 @@ const AdminFinancials = () => {
                         </span>
                       </td>
                       <td className="py-3.5 px-4 whitespace-nowrap">
+                        <div className="flex flex-col gap-0.5">
+                          <span className="inline-flex items-center gap-0.5 font-bold text-[#07A698] text-xs">
+                            <FaBangladeshiTakaSign className="text-[10px]" />
+                            <span>{Number(item.commissionAmount ?? 0).toFixed(2)}</span>
+                          </span>
+                          <span className="text-[10px] text-stone-400 font-medium">
+                            {item.commissionPercentage ?? 0}%{item.isLegacyFeeRate ? ' (est.)' : ''}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-3.5 px-4 whitespace-nowrap">
                         {statusLower === 'completed' || statusLower === 'paid' ? (
                           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold capitalize bg-emerald-50 text-emerald-700 border border-emerald-200">
                             <FiCheckCircle className="shrink-0" /> Paid
@@ -299,24 +265,6 @@ const AdminFinancials = () => {
                         ) : (
                           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold capitalize bg-amber-50 text-amber-700 border border-amber-200">
                             <FiClock className="shrink-0" /> {item.status || 'Pending'}
-                          </span>
-                        )}
-                      </td>
-                      <td className="py-3.5 px-4 text-center whitespace-nowrap">
-                        {statusLower === 'completed' || statusLower === 'paid' ? (
-                          <button
-                            onClick={() => handleIssueRefund(item)}
-                            className="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl text-xs font-bold border border-rose-200 transition-all cursor-pointer"
-                          >
-                            Issue Refund
-                          </button>
-                        ) : statusLower === 'refund_pending' || statusLower === 'refund pending' ? (
-                          <span className="text-amber-700 font-bold text-[11px] bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 inline-block">
-                            Request Pending
-                          </span>
-                        ) : (
-                          <span className="text-stone-400 font-medium text-[11px]">
-                            Processed
                           </span>
                         )}
                       </td>

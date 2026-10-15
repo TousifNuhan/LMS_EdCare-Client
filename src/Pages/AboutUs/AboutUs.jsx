@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import {
     FiBookOpen,
     FiCpu,
@@ -79,16 +78,6 @@ const AboutUs = () => {
         return `${num}+`;
     };
 
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-    };
-
-    const staggerContainer = {
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.12 } }
-    };
-
     const stats = [
         {
             id: 1,
@@ -122,13 +111,7 @@ const AboutUs = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-[#07A698]/10 via-[#07A698]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
             <div className="absolute bottom-10 right-0 w-[400px] h-[400px] bg-[#07A698]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
-            <motion.section
-                className="max-w-4xl mx-auto text-center mb-24 relative"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-            >
+            <section className="max-w-4xl mx-auto text-center mb-24 relative">
                 <div className="inline-flex items-center gap-2 bg-[#07A698]/10 border border-[#07A698]/20 text-[#07A698] font-semibold text-xs tracking-widest uppercase px-4 py-1.5 rounded-full mb-6 shadow-sm">
                     <FiZap className="w-3.5 h-3.5" /> Empowering Next-Gen Innovators
                 </div>
@@ -140,19 +123,10 @@ const AboutUs = () => {
                 <p className="text-slate-600 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
                     We bridge the gap between complex engineering concepts, practical development, and intuitive digital learning experiences.
                 </p>
-            </motion.section>
+            </section>
 
-            <motion.section
-                className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-28"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-            >
-                <motion.div
-                    variants={fadeInUp}
-                    className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/40 transition-all duration-300"
-                >
+            <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-28">
+                <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/40 transition-all duration-300">
                     <div className="w-14 h-14 rounded-2xl bg-[#07A698]/10 flex items-center justify-center text-[#07A698] mb-6">
                         <FiTarget className="w-7 h-7" />
                     </div>
@@ -162,12 +136,9 @@ const AboutUs = () => {
                         by pairing structured curricula with real-world projects, direct mentorship, and honest
                         feedback on progress.
                     </p>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    variants={fadeInUp}
-                    className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/40 transition-all duration-300"
-                >
+                <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/40 transition-all duration-300">
                     <div className="w-14 h-14 rounded-2xl bg-[#07A698]/10 flex items-center justify-center text-[#07A698] mb-6">
                         <FiEye className="w-7 h-7" />
                     </div>
@@ -177,17 +148,11 @@ const AboutUs = () => {
                         actually reflect demonstrated skill, and turn that learning into a career — without gatekeeping
                         or geography getting in the way.
                     </p>
-                </motion.div>
-            </motion.section>
+                </div>
+            </section>
 
-            <motion.section
-                className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-28"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-            >
-                <motion.div variants={fadeInUp} className="lg:col-span-7 space-y-6 lg:pr-6">
+            <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-28">
+                <div className="lg:col-span-7 space-y-6 lg:pr-6">
                     <span className="text-[#07A698] font-bold text-sm uppercase tracking-wider">What We Stand For</span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
                         Built for Students, Engineers, & Problem Solvers
@@ -211,9 +176,9 @@ const AboutUs = () => {
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </div>
 
-                <motion.div variants={fadeInUp} className="lg:col-span-5 relative">
+                <div className="lg:col-span-5 relative">
                     <div className="relative bg-slate-900 rounded-3xl p-8 sm:p-10 text-white shadow-2xl border border-slate-800 overflow-hidden">
                         <div className="absolute top-0 right-0 w-48 h-48 bg-[#07A698]/25 rounded-full blur-2xl pointer-events-none" />
                         <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#07A698]/10 rounded-full blur-2xl pointer-events-none" />
@@ -242,21 +207,14 @@ const AboutUs = () => {
                             </div>
                         )}
                     </div>
-                </motion.div>
-            </motion.section>
+                </div>
+            </section>
 
-            <motion.section
-                className="max-w-6xl mx-auto mb-28"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-            >
+            <section className="max-w-6xl mx-auto mb-28">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                     {stats.map((stat) => (
-                        <motion.div
+                        <div
                             key={stat.id}
-                            variants={fadeInUp}
                             className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/50 transition-all duration-300 group"
                         >
                             <div className="w-12 h-12 rounded-2xl bg-slate-50 group-hover:bg-[#07A698]/10 flex items-center justify-center mb-4 transition-colors">
@@ -275,19 +233,13 @@ const AboutUs = () => {
                                 )}
                             </h4>
                             <p className="text-slate-500 text-xs sm:text-sm font-medium">{stat.label}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
-            </motion.section>
+            </section>
 
-            <motion.section
-                className="max-w-6xl mx-auto mb-28"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-            >
-                <motion.div variants={fadeInUp} className="text-center max-w-2xl mx-auto mb-14">
+            <section className="max-w-6xl mx-auto mb-28">
+                <div className="text-center max-w-2xl mx-auto mb-14">
                     <span className="text-[#07A698] font-bold text-sm uppercase tracking-wider">Meet Our Team</span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mt-3">
                         Learn From Instructors Actually Teaching Right Now
@@ -295,7 +247,7 @@ const AboutUs = () => {
                     <p className="text-slate-600 leading-relaxed text-base mt-4">
                         These are real mentors on EdCare today, ranked by the students and courses they're actively running.
                     </p>
-                </motion.div>
+                </div>
 
                 {instructorsLoading ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -314,9 +266,8 @@ const AboutUs = () => {
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {instructors.map((instructor) => (
-                            <motion.div
+                            <div
                                 key={instructor.email}
-                                variants={fadeInUp}
                                 className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-[#07A698]/40 transition-all duration-300"
                             >
                                 <div className="flex items-center gap-4 mb-4">
@@ -352,19 +303,13 @@ const AboutUs = () => {
                                         </span>
                                     )}
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 )}
-            </motion.section>
+            </section>
 
-            <motion.section
-                className="max-w-5xl mx-auto"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-            >
+            <section className="max-w-5xl mx-auto">
                 <div className="relative bg-gradient-to-r from-[#07A698] via-[#069387] to-[#04685f] rounded-3xl p-10 sm:p-14 text-center text-white shadow-xl shadow-[#07A698]/15 overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
                     <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-black/10 rounded-full blur-2xl pointer-events-none" />
@@ -393,7 +338,7 @@ const AboutUs = () => {
                         </Link>
                     </div>
                 </div>
-            </motion.section>
+            </section>
 
         </div>
     );

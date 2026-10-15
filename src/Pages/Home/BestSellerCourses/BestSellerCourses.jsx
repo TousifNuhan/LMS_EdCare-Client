@@ -4,15 +4,10 @@ import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import useClasses from '../../../hooks/useClasses';
 
 const BestSellerCourses = () => {
-    const navigate = useNavigate();
-
-    // 1. Fetch real courses from custom hook
-    const [classes = []] = useClasses();
-
-    // Helper function to normalize category strings for comparison
+    const navigate = useNavigate();   
+    const [classes = []] = useClasses(); 
     const normalizeStr = (str = '') => str.toLowerCase().replace(/[\s\-_]/g, '');
-
-    // Helper function to render clean label display
+  
     const formatCategoryLabel = (cat = '') => {
         const normalized = normalizeStr(cat);
         if (normalized === 'ai') return 'AI';
@@ -25,8 +20,7 @@ const BestSellerCourses = () => {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
             .join(' ');
     };
-
-    // 2. DYNAMICALLY CALCULATE TOP 3 CATEGORIES BY TOTAL ENROLLMENT
+ 
     const categories = useMemo(() => {
         const categoryEnrollments = {};
 
@@ -44,7 +38,6 @@ const BestSellerCourses = () => {
             .slice(0, 3);
     }, [classes]);
 
-    // 3. Active Tab State
     const [activeCategory, setActiveCategory] = useState('');
 
     useEffect(() => {
@@ -53,7 +46,7 @@ const BestSellerCourses = () => {
         }
     }, [categories, activeCategory]);
 
-    // Helper function for safe navigation to details page
+    
     const handleCourseClick = (course) => {
         const targetId = course._id || course.id;
         if (targetId) {
@@ -61,7 +54,6 @@ const BestSellerCourses = () => {
         }
     };
 
-    // --- NUMBER FORMATTING HELPERS ---
     const formatPrice = (val) => {
         const num = parseFloat(val);
         return isNaN(num) ? '0.00' : num.toFixed(2);
@@ -72,7 +64,6 @@ const BestSellerCourses = () => {
         return isNaN(num) ? '5.0' : num.toFixed(1);
     };
 
-    // 4. Filter by accepted status + normalized category, SORT by totalEnrollment -> rating
     const bestSelling = useMemo(() => {
         if (!activeCategory) return [];
 
@@ -91,19 +82,15 @@ const BestSellerCourses = () => {
                 return (Number(b.rating) || 0) - (Number(a.rating) || 0);
             });
     }, [classes, activeCategory]);
-
-    // 5. Hero Course (#1 ranked item)
+  
     const heroCourse = bestSelling[0];
-
-    // 6. Remaining Top Courses (Capped at maximum 3 items for the right side)
     const standardCourses = bestSelling.slice(1, 4);
 
     return (
         <section className="bg-[#f4f7fa] py-16 md:py-20 px-4 md:px-8 font-sans overflow-hidden">
-            {/* FIXED: Removed mx-5 and adjusted mobile padding to prevent horizontal scroll issues */}
+         
             <div className="max-w-7xl mx-auto">
                 
-                {/* Header Layout */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 gap-5 md:gap-6">
                     <div>
                         <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200/60 text-[#a65100] text-[11px] md:text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg mb-3 md:mb-4">
@@ -136,11 +123,11 @@ const BestSellerCourses = () => {
                     )}
                 </div>
 
-                {/* Main Content Stage */}
+               
                 {bestSelling.length > 0 ? (
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
                         
-                        {/* LEFT STAGE: Hero Focal Highlight Card */}
+                        {/* LEFT side */}
                         {heroCourse && (
                             <div 
                                 onClick={() => handleCourseClick(heroCourse)}
@@ -215,7 +202,7 @@ const BestSellerCourses = () => {
                             </div>
                         )}
 
-                        {/* RIGHT STAGE: Standard Course Stack (Max 3 items) */}
+                        {/* RIGHT side */}
                         <div className="lg:col-span-7 flex flex-col gap-4">
                             {standardCourses.length > 0 ? (
                                 standardCourses.map((course, idx) => (

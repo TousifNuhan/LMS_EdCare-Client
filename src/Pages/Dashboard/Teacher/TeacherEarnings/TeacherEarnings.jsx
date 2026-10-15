@@ -57,7 +57,7 @@ const TeacherEarnings = () => {
 
   const payoutMethod = rawStats.payoutMethod || userData?.payoutMethod || null;
 
-  // Pre-fill the edit form with existing values whenever they load/change
+  
   useEffect(() => {
     if (payoutMethod) {
       setBkashNumber(payoutMethod.number || '');
@@ -68,8 +68,7 @@ const TeacherEarnings = () => {
   const courses = (rawStats.courses || []).map((course) => {
     const price = Number(course.price || 0);
     const gross = Number(course.grossSales || 0);
-    // const net = Number(course.netRevenue || (gross * 0.90));
-    const net = Number(course.netRevenue ?? gross); // no more assumed flat 10%; trust backend's accurate per-payment calculation
+    const net = Number(course.netRevenue ?? gross); 
     const enrolled = Number(course.salesCount || course.enrolled || 0);
 
     return {
@@ -305,7 +304,7 @@ console.log('userData:', userData);
         </div>
       </div>
 
-      {/* Payout Account section — bKash instead of Stripe */}
+     
       <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-4">

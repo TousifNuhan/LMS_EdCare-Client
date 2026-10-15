@@ -182,7 +182,7 @@ const AllClassesAdmin = () => {
   return (
     <div className="space-y-6 bg-[#fafbfb] min-h-screen p-2 md:p-6 font-sans text-stone-800">
       
-      {/* KPI Stats Overview */}
+      
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex items-center justify-between">
           <div>
@@ -217,10 +217,10 @@ const AllClassesAdmin = () => {
         </div>
       </div>
 
-      {/* Main Table Container */}
+     
       <div className="bg-white rounded-2xl border border-stone-200/80 shadow-xs overflow-hidden">
         
-        {/* Controls Toolbar */}
+        
         <div className="p-5 border-b border-stone-100 flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="relative w-full md:w-80">
             <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-base shrink-0" />
@@ -233,7 +233,7 @@ const AllClassesAdmin = () => {
             />
           </div>
 
-          {/* Filter Pills */}
+          
           <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto scrollbar-none">
             {['All', 'Pending', 'Approved', 'Rejected'].map((status) => (
               <button
@@ -251,7 +251,7 @@ const AllClassesAdmin = () => {
           </div>
         </div>
 
-        {/* Course Submissions Table */}
+       
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
@@ -272,7 +272,7 @@ const AllClassesAdmin = () => {
                   return (
                     <tr key={item._id} className="hover:bg-stone-50/50 transition-colors">
                       
-                      {/* Title & Cover */}
+                      
                       <td className="p-4">
                         <div className="flex items-center gap-3">
                           <img
@@ -287,13 +287,13 @@ const AllClassesAdmin = () => {
                         </div>
                       </td>
 
-                      {/* Instructor Info */}
+                     
                       <td className="p-4">
                         <p className="font-bold text-stone-800 break-words">{item.teacherName || item.name || 'Instructor'}</p>
                         <p className="text-[11px] text-stone-400 font-mono mt-0.5 break-all">{item.teacherEmail || item.email}</p>
                       </td>
 
-                      {/* Metadata */}
+                     
                       <td className="p-4 whitespace-nowrap">
                         <span className="inline-block text-[10px] font-bold uppercase bg-stone-100 text-stone-600 px-2 py-0.5 rounded mb-1">
                           {item.category || 'General'}
@@ -303,7 +303,7 @@ const AllClassesAdmin = () => {
                         </p>
                       </td>
 
-                      {/* Status Badge */}
+                
                       <td className="p-4 text-center whitespace-nowrap">
                         {status === 'accepted' || status === 'approved' ? (
                           <span className="inline-flex items-center gap-1 px-2.5 py-1 font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
@@ -320,7 +320,7 @@ const AllClassesAdmin = () => {
                         )}
                       </td>
 
-                      {/* Full Audit Drawer Trigger */}
+                      
                       <td className="p-4 text-center whitespace-nowrap">
                         <button
                           onClick={() => {
@@ -333,7 +333,7 @@ const AllClassesAdmin = () => {
                         </button>
                       </td>
 
-                      {/* Action Approval Buttons */}
+                     
                       <td className="p-4 whitespace-nowrap">
                         <div className="flex justify-center gap-1.5">
                           <button
@@ -353,7 +353,7 @@ const AllClassesAdmin = () => {
                         </div>
                       </td>
 
-                      {/* Progress/Analytics Link */}
+                     
                       <td className="p-4 text-center whitespace-nowrap">
                         <button
                           onClick={() => navigate(`/dashboard/class/${item._id}`)}
@@ -378,13 +378,13 @@ const AllClassesAdmin = () => {
         </div>
       </div>
 
-      {/* Comprehensive Admin Audit Drawer */}
+     
       {selectedCourse && (
         <div className="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex justify-end transition-opacity font-sans">
           <div className="w-full max-w-2xl bg-white h-full shadow-2xl p-6 overflow-y-auto space-y-6 flex flex-col justify-between">
             <div className="space-y-6">
               
-              {/* Drawer Header */}
+             
               <div className="flex items-start justify-between border-b border-stone-100 pb-4 gap-3">
                 <div className="space-y-1 min-w-0 flex-1">
                   <div className="flex items-center gap-2">
@@ -413,7 +413,7 @@ const AllClassesAdmin = () => {
                 </button>
               </div>
 
-              {/* Dynamic Video / Promo / Lesson Player Frame */}
+             
               <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-[11px] font-bold text-stone-500 flex items-center gap-1.5 truncate">
@@ -487,7 +487,7 @@ const AllClassesAdmin = () => {
                 </div>
               </div>
 
-              {/* Quick Metrics Dashboard */}
+            
               <div className="grid grid-cols-3 gap-3">
                 <div className="p-3 bg-stone-50 rounded-xl border border-stone-200/60 text-center">
                   <FaBangladeshiTakaSign className="text-stone-400 mx-auto mb-1 text-sm shrink-0" />
@@ -512,7 +512,7 @@ const AllClassesAdmin = () => {
                 </div>
               </div>
 
-              {/* Course Overview & Description */}
+             
               <div className="space-y-2">
                 <h4 className="text-xs font-extrabold uppercase tracking-wider text-stone-400 flex items-center gap-1.5">
                   <FiFileText className="shrink-0" /> Course Synopsis
@@ -522,7 +522,7 @@ const AllClassesAdmin = () => {
                 </div>
               </div>
 
-              {/* Instructor Verification Card */}
+              
               <div className="space-y-2">
                 <h4 className="text-xs font-extrabold uppercase tracking-wider text-stone-400 flex items-center gap-1.5">
                   <FiUser className="shrink-0" /> Instructor Profile
@@ -545,7 +545,7 @@ const AllClassesAdmin = () => {
                 </div>
               </div>
 
-              {/* Enhanced Curriculum Breakdown Audit with Video Verification */}
+             
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-xs font-extrabold uppercase tracking-wider text-stone-400 flex items-center gap-1.5">
@@ -628,7 +628,7 @@ const AllClassesAdmin = () => {
                 </div>
               </div>
 
-              {/* Existing Rejection History Reason (if currently rejected) */}
+              
               {selectedCourse.rejectionReason && (
                 <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl space-y-1">
                   <p className="text-xs font-bold text-rose-900 flex items-center gap-1.5">
@@ -638,7 +638,7 @@ const AllClassesAdmin = () => {
                 </div>
               )}
 
-              {/* Admin Decision Guidelines */}
+              
               <div className="p-4 bg-amber-50 border border-amber-200/80 rounded-xl text-amber-900 text-xs flex items-start gap-3">
                 <FiAlertCircle className="text-amber-600 text-lg shrink-0 mt-0.5" />
                 <div className="space-y-1">
@@ -652,7 +652,7 @@ const AllClassesAdmin = () => {
               </div>
             </div>
 
-            {/* Modal Bottom Action Controls */}
+            
             <div className="pt-4 border-t border-stone-100 flex gap-3 bg-white sticky bottom-0">
               <button
                 onClick={() => handleStatusChange(selectedCourse, 'accepted')}

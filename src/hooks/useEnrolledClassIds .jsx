@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'; // or useState/useEffect if you're not using react-query
+import { useQuery } from '@tanstack/react-query'; 
 import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
 
@@ -11,7 +11,7 @@ const useEnrolledClassIds = () => {
         enabled: !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get('/enrolled-classes');
-            // returns array of enrollment objects with classId
+            
             return res.data.map(item => item.classId?.toString());
         }
     });

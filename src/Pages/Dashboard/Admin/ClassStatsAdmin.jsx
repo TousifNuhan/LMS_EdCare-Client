@@ -2,9 +2,10 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { 
-  FiArrowLeft, FiDollarSign, FiUsers, FiBookOpen, 
+  FiArrowLeft, FiUsers, FiBookOpen, 
   FiTrendingUp, FiCheckCircle, FiAlertCircle, FiActivity 
 } from 'react-icons/fi';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ClassStatsAdmin = () => {
@@ -107,10 +108,10 @@ const ClassStatsAdmin = () => {
           <div>
             <p className="text-xs font-bold text-stone-400 uppercase tracking-wider">Total Revenue</p>
             <p className="text-2xl font-black text-stone-900 mt-1">
-              ${parsedRevenue.toFixed(2)}
+              ৳{Math.round(parsedRevenue)}
             </p>
           </div>
-          <div className="p-3 bg-emerald-50 rounded-xl text-emerald-600 shrink-0"><FiDollarSign className="text-xl" /></div>
+          <div className="p-3 bg-emerald-50 rounded-xl text-emerald-600 shrink-0"><FaBangladeshiTakaSign className="text-xl" /></div>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex items-center justify-between">
@@ -125,7 +126,7 @@ const ClassStatsAdmin = () => {
           <div>
             <p className="text-xs font-bold text-amber-600 uppercase tracking-wider">Course Price</p>
             <p className="text-2xl font-black text-amber-700 mt-1">
-              {coursePrice === 0 ? 'FREE' : `$${coursePrice.toFixed(2)}`}
+              {coursePrice === 0 ? 'FREE' : `৳${Math.round(coursePrice)}`}
             </p>
           </div>
           <div className="p-3 bg-amber-50 rounded-xl text-amber-600 shrink-0"><FiTrendingUp className="text-xl" /></div>
@@ -180,7 +181,7 @@ const ClassStatsAdmin = () => {
                         {enrollmentDate ? new Date(enrollmentDate).toLocaleDateString() : 'N/A'}
                       </td>
                       <td className="p-4 text-center font-black text-stone-900 whitespace-nowrap">
-                        ${studentPrice.toFixed(2)}
+                        ৳{Math.round(studentPrice)}
                       </td>
                       <td className="p-4 text-center whitespace-nowrap">
                         {isRefunded ? (

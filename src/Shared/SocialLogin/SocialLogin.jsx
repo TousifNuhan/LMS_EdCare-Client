@@ -19,8 +19,10 @@ const SocialLogin = () => {
 
       try {
         await axiosPublic.post('/users', userInfo);
-      } catch (dbErr) {
-        // Auth succeeds even if DB record creation fails; let auth state progress
+      } 
+      catch (dbErr) {
+       
+        // console.log(dbErr)
       }
 
       toast.success("Login successful!");
@@ -42,7 +44,7 @@ const SocialLogin = () => {
       try {
         await axiosPublic.post('/users', userInfo);
       } catch (dbErr) {
-        // Auth succeeds even if DB record creation fails; let auth state progress
+        // console.log(dbErr)
       }
 
       toast.success("Login successful!");

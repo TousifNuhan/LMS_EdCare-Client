@@ -45,8 +45,14 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: 'allCourses', element: <AllClasses /> },
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: 'allCourses',
+        element: <AllClasses />
+      },
       { path: '/courseDetails/:id', element: <ClassDetails /> },
       { path: 'teachON', element: <PrivateRoute><TeachOn /></PrivateRoute> },
       { path: 'login', element: <Login /> },
@@ -59,13 +65,13 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
-      // Index Route — Overview Page
+      // Overview Page
       {
         index: true,
         element: <Overview />
       },
 
-      // Common & Student Routes
+      // Student Routes
       {
         path: 'profile',
         element: <MyProfile />
@@ -107,7 +113,7 @@ export const router = createBrowserRouter([
         element: <MyCertificates />
       },
 
-      // Admin-only routes
+      // Admin only routes
       {
         path: 'manage-users',
         element: <AdminRoute><ManageUsers /></AdminRoute>
@@ -145,7 +151,7 @@ export const router = createBrowserRouter([
         element: <AdminRoute><PlatformFeeSettings /></AdminRoute>
       },
 
-      // Teacher-only routes
+      // Teacher only routes
       {
         path: 'add-class',
         element: <TeacherRoute><AddNewClass /></TeacherRoute>

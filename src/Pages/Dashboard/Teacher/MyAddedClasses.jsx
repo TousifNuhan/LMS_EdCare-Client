@@ -366,14 +366,7 @@ const MyAddedClasses = () => {
                     </button>
                   )}
 
-                  <button
-                    type="button"
-                    onClick={() => handleOpenUpdate(cls)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-xl transition cursor-pointer"
-                  >
-                    <FiEdit size={14} />
-                    Update
-                  </button>
+                  
 
                   <button
                     type="button"

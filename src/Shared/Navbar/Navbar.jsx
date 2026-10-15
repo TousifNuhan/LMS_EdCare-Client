@@ -22,7 +22,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [hidden, setHidden] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
-    
+
     const [cart] = useCart();
 
     const closeDropdown = () => {
@@ -45,7 +45,7 @@ const Navbar = () => {
 
     const isHomePage = location.pathname === "/";
 
-    // Hide navbar on scroll-down, show it on scroll-up
+    
     useEffect(() => {
         const handleScroll = () => {
             const currentY = window.scrollY;
@@ -65,10 +65,9 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
-    // Unified styling for links: dark on mobile dropdown, white on desktop navbar
-    const navLinkStyle = ({ isActive }) => 
-        `cursor-pointer text-sm md:text-base font-semibold tracking-wider uppercase antialiased transition-all duration-300 ease-in-out block py-2.5 lg:py-0 lg:px-4 ${
-            isActive ? 'text-[#07A698]' : 'text-stone-700 lg:text-white hover:text-[#07A698]'
+    
+    const navLinkStyle = ({ isActive }) =>
+        `cursor-pointer text-sm md:text-base font-semibold tracking-wider uppercase antialiased transition-all duration-300 ease-in-out block py-2.5 lg:py-0 lg:px-4 ${isActive ? 'text-[#07A698]' : 'text-stone-700 lg:text-white hover:text-[#07A698]'
         }`;
 
     const navlinks1 = (
@@ -83,16 +82,16 @@ const Navbar = () => {
                 Teach on EdCare
             </NavLink>
             <NavLink onClick={closeDropdown} className={navLinkStyle} to="/about-us">
-               About 
+                About
             </NavLink>
         </>
     );
 
-   const getBackgroundClass = () => {
-        // py-5 and py-6 control the height on internal pages
-        if (!isHomePage) return 'bg-[#162726] shadow-md backdrop-blur-md py-5 md:py-6';
-        
-        // py-5/py-6 is the height when scrolled, py-6/py-8 is the height when at the very top
+    const getBackgroundClass = () => {
+
+        if (!isHomePage) 
+            return 'bg-[#162726] shadow-md backdrop-blur-md py-5 md:py-6';
+
         return isScrolled ? 'bg-[#162726] shadow-md py-5 md:py-6' : 'bg-transparent py-6 md:py-8';
     };
 
@@ -115,22 +114,22 @@ const Navbar = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
-                        {/* Fix: Replaced bg-base-100 and .menu with explicit bg-white and flex-col */}
+
                         <ul tabIndex={0} className="dropdown-content bg-white rounded-2xl z-[100] mt-5 w-56 p-5 shadow-2xl border border-stone-100 flex flex-col gap-1">
                             {navlinks1}
                         </ul>
                     </div>
                     <div className='flex items-center'>
-                        <img 
-                            src="https://wp.rrdevs.net/edcare/source/preview/assets/imgs/logo/logo-white.svg" 
-                            alt="EdCare Logo" 
+                        <img
+                            src="https://wp.rrdevs.net/edcare/source/preview/assets/imgs/logo/logo-white.svg"
+                            alt="EdCare Logo"
                             className="w-24 md:w-auto"
                         />
                     </div>
                 </div>
 
                 <div className="navbar-center hidden lg:flex flex-1 justify-center">
-                    {/* Fix: Removed .menu class here too for consistency */}
+
                     <ul className="flex items-center gap-2">
                         {navlinks1}
                     </ul>

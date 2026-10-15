@@ -9,7 +9,7 @@ const MyCertificates = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  // 1. Fetch enrolled courses
+  
   const { data: courses = [], isLoading: coursesLoading } = useQuery({
     queryKey: ['my-enrolled-classes'],
     queryFn: async () => {
@@ -24,7 +24,7 @@ const MyCertificates = () => {
 
   const classIds = activeCourses.map(c => c.classId || c._id).filter(Boolean);
 
-  // 2. Bulk-check certificate eligibility for all enrolled courses at once
+  
   const { data: statusMap = {}, isLoading: statusLoading } = useQuery({
     queryKey: ['certificate-status-bulk', classIds],
     queryFn: async () => {
@@ -45,10 +45,10 @@ const MyCertificates = () => {
     );
   }
 
-  // Only show courses that actually have a status entry (i.e. student is enrolled and has assignments)
+  
   const eligibleList = classIds
     .map(id => ({ id, ...statusMap[id] }))
-    .filter(entry => entry.courseTitle); // filters out any classIds the backend skipped
+    .filter(entry => entry.courseTitle); 
 
   return (
     <div className="min-h-screen bg-[#fafbfb] p-4 md:p-8 font-sans text-stone-800">

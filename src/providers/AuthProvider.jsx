@@ -10,8 +10,8 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [initializing, setInitializing] = useState(true); // only for the FIRST Firebase check
-    const [loading, setLoading] = useState(false);            // for in-flight action UI (buttons, etc.)
+    const [initializing, setInitializing] = useState(true); 
+    const [loading, setLoading] = useState(false);            
 
     const axiosPublic = useAxiosPublic();
 
@@ -44,17 +44,14 @@ const AuthProvider = ({ children }) => {
         return sendPasswordResetEmail(auth, email);
     };
 
-    // NEW: Function to manually trigger a user state update
     const refreshUser = () => {
-        // Firebase mutates auth.currentUser in place; spread creates a new
-        // object reference so React actually detects the change and re-renders
         setUser({ ...auth.currentUser });
     };
 
     const authInfo = {
         user,
-        loading,        // safe to use for disabling a submit button, spinners INSIDE a form, etc.
-        initializing,   // this is what route guards should check
+        loading,        
+        initializing,   
         setLoading,
         login,
         register,
@@ -62,7 +59,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         githubLogin,
         resetPassword,
-        refreshUser     // NEW: Added to context provider
+        refreshUser     
     };
 
     useEffect(() => {
@@ -83,7 +80,7 @@ const AuthProvider = ({ children }) => {
             }
             setUser(currentUser);
             setLoading(false);
-            setInitializing(false); // only matters the first time, subsequent calls are harmless no-ops
+            setInitializing(false); 
         });
         return () => unSubscribe();
     }, [axiosPublic]);

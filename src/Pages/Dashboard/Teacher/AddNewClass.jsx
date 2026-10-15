@@ -143,7 +143,7 @@ const AddNewClass = () => {
     const cleanedObjectives = (data.objectives || []).filter((o) => o && o.trim() !== "");
     const cleanedRequirements = (data.requirements || []).filter((r) => r && r.trim() !== "");
 
-    // Parse as integer so it saves cleanly without decimals
+    
     const parsedPrice = Math.round(parseFloat(data.price)) || 0;
     const parsedOriginalPrice = Math.round(parseFloat(data.originalPrice)) || 0;
 
