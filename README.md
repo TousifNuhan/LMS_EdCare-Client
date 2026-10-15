@@ -6,6 +6,7 @@ EdCare is a full-stack, role-based online learning platform where **students** b
 
 ## 🔗 Live Links
 
+| | |
 |---|---|
 | **Live Site** | https://edcare-56e4b.web.app/ |
 | **Client Repository** | https://github.com/TousifNuhan/LMS_EdCare-Client |
